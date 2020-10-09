@@ -1,0 +1,104 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-09 12:47:13
+ * @LastEditTime: 2020-10-09 13:57:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \jqueryDemo\折叠菜单.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            list-style: none;
+            width: 800px;
+            margin: 100px auto;
+        }
+
+        .nav>li {
+            line-height: 35px;
+            border: none;
+            border-top: 1px solid #dee1e7;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .nav>li:last-child {
+            border-bottom: 1px solid #dee1e7;
+        }
+
+        .nav>li>span {
+            border-style: solid;
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 0;
+            top: 12px;
+            border-width: 6px;
+            border-color: #a9a9aa transparent transparent transparent;
+        }
+
+        .nav>.active>span {
+            transform: rotate(270deg);
+        }
+
+        .sub {
+            display: none;
+        }
+
+        .sub>li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>一致性 Consistency<span></span>
+            <ul class="sub">
+                <li>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+                    在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</li>
+            </ul>
+        </li>
+        <li>反馈 Feedback<span></span>
+            <ul class="sub">
+                <li>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
+                    页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</li>
+            </ul>
+        </li>
+        <li>效率 Efficiency<span></span>
+            <ul class="sub">
+                <li>简化流程：设计简洁直观的操作流程；
+                    清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；
+                    帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</li>
+            </ul>
+        </li>
+        <li>可控 Controllability<span></span>
+            <ul class="sub">
+                <li>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
+                    结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function () {
+            $('.nav>li').click(function () {
+                $(this).children('.sub').slideToggle(500);
+                $(this).toggleClass('active');
+            })
+        })
+    </script>
+</body>
+
+</html>

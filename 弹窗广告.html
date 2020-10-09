@@ -1,0 +1,66 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-09 13:58:50
+ * @LastEditTime: 2020-10-09 14:10:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \jqueryDemo\弹窗广告.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ad {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        img{
+            width: 360px;
+            height: 220px;
+        }
+        .ad>span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad">
+        <img src="timg.jpg" alt="">
+        <span></span>
+    </div>
+    <script>
+        $(function () {
+            $('span').click(function () {
+                $('.ad').remove()
+            })
+            /*
+            $('ad').slideDown(1000, function () {
+                $('.ad').fadeOut(1000, function () {
+                    $('.ad').fadeIn(1000)
+                })
+            })
+            */
+            $('.ad').stop().slideDown(1000).fadeOut(1000).fadeIn(1000)
+        })
+    </script>
+</body>
+
+</html>

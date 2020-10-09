@@ -1,0 +1,136 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-09 11:28:32
+ * @LastEditTime: 2020-10-09 12:19:38
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \jqueryagain\banner.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #play {
+            width: 520px;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #play>ol {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+            background: rgba(255, 255, 255, .4);
+            padding: 2px 4px;
+            border-radius: 5px;
+        }
+
+        ol>li {
+            background: #fff;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+
+        .active {
+            background: #ff5000;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: flex;
+        }
+
+        ul li {
+            float: left;
+        }
+
+        ul img {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="play" id="play">
+        <ol>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <ul>
+            <li><img src="O1CN01aQVwvP27hH1kzzTRE_!!2176017828-0-alimamazszw.jpg" alt=""></li>
+            <li><img src="O1CN01imkiDE1RvHHHMlko6_!!6000000002173-0-octopus.jpg" alt=""></li>
+            <li><img src="O1CN01PduvVO1umEJPqFl7Z_!!6000000006079-0-octopus.jpg" alt=""></li>
+            <li><img src="TB1Mw.qOQY2gK0jSZFgSuw5OFXa.jpg" alt=""></li>
+            <li><img src="TB1sdK0gtTfau8jSZFwSut1mVXa.jpg" alt=""></li>
+            <li><img src="O1CN01aQVwvP27hH1kzzTRE_!!2176017828-0-alimamazszw.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            var aBtns = $('#play ol li');
+            var oUl = $('#play ul');
+            var aLis = oUl.find("li")
+            var iNow = 0;
+            var timer = null;
+            aBtns.click(function () {
+                iNow = $(this).index();
+                tab();
+            })
+            $('#play').mouseenter(() => {
+                clearTimeout(timer)
+            }).mouseleave(() => {
+                timer = setInterval(() => {
+                    iNow++;
+                    tab();
+                }, 2000)
+            })
+            timer = setInterval(() => {
+                iNow++;
+                tab();
+            }, 2000)
+
+            function tab() {
+                aBtns.attr('class', '').eq(iNow).attr('class', 'active');
+                if (iNow == aBtns.length) {
+                    aBtns.eq(0).attr('class', 'active');
+                }
+                oUl.animate({
+                    left: iNow * -520
+                }, 500, () => {
+                    if (iNow == aBtns.length) {
+                        iNow = 0
+                        oUl.css('left', 0)
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
